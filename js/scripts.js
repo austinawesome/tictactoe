@@ -5,8 +5,8 @@ var player1;
 var player2;
 var activePlayer;
 var value;
-
-
+var row;
+var placement;
 function Player (name,symbol,value) {
   this.symbol = symbol;
   this.name = name;
@@ -20,37 +20,32 @@ if(activePlayer===player1){
 //console.log(activePlayer.symbol);
 return activePlayer;
 }
-winConditions = [a0,a1,a2],[b0,b1,b2],[c0,c1,c2],[a0,b0,c0],[a1,c1,b1],[a2,c2,b2],[a0,b1,c2],[c0,b1,a2];
+var winConditions = [[a0,a1,a2],[b0,b1,b2],[c0,c1,c2]]//[a0,b0,c0],[a1,c1,b1],[a2,c2,b2],[a0,b1,c2],[c0,b1,a2];
 
-// function winConditionChecker {
+function winConditionChecker() {
+
 // for()
 // ($(this).attr('value'));
 // }
+if( 9=== row) {
+  alert("win");
+}
+}
 
-function getValues() {
-  var row='a';
-  for(i=0;i<=4;i++){
-    for(i=0;i<=3;i++) {
-      current=row.concat(i);
-      console.log("current as name"+current);
-      current=row[i];
-      current=$(current).attr('value');
-      console.log("current as value"+current);
-    } if(row==='a') {
-      row='b';
-    } else if(row==='b') {
-      row='c';
-    } else {
-      break;
-    }
-  }
-};
 function ticTacClick(){ //disable those already clicked
 switchem(player1,player2);
 $(this).append('<p>'+activePlayer.symbol+'</p>');
 this.setAttribute("value", activePlayer.value);
 console.log(parseInt($(this).attr('value')));
-getValues();
+var placement=($(this).attr('id'));
+winConditions[placement]=(parseInt($(this).attr('value')));
+// getValues();
+
+// row=row+
+console.log(($('#a0').attr('value')))
+
+
+winConditionChecker();
 };
 $(".col-md-4").on("click",ticTacClick);
 
